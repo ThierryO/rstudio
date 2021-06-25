@@ -493,6 +493,8 @@
       formats <- rmarkdown:::enumerate_output_formats(input = index,
                                                       envir = parent.frame(),
                                                       encoding = encoding)
+      site <- rmarkdown::yaml_front_matter(input = index, encoding = encoding)
+      formats <- c(formats, site[["site"]])
       any(grepl("^bookdown", formats))
    }
    else
